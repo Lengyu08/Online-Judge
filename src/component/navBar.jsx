@@ -62,7 +62,7 @@ class NavBar extends Component {
                             <Link className="nav-link" to="#">注册</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">本项目所有的源代码</a>
+                            <a className="nav-link" href="https://github.com/Lengyu08/Online-Judge" target="_blank">本项目所有的源代码</a>
                         </li>
                         </ul>
                         <form className="d-flex mt-3" role="search">
