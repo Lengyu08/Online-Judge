@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import NavBar from './navBar';
+import NavBar from './navBar'; // 导航栏 
+import Home from './content/home';
+import Login from './content/login';
+import Register from './content/register';
+import NotFound from './content/notFound';
+import { Route, Routes, Navigate } from 'react-router-dom'; // 路由
 
 // 主方法
 class APP extends Component {
@@ -7,7 +12,18 @@ class APP extends Component {
     render() { 
         return (
             <React.Fragment>
-                <NavBar></NavBar>
+                <NavBar/> {/* 实现导航栏 */}
+                <div className="container"> {/* container 响应式的调整布局 */}
+                    <Routes>
+                        <Route path="/" element={<Home />}/>
+                        <Route path="/home" element={<Home />}/>
+                        <Route path="/login" element={<Login />}/>
+                        <Route path="/register" element={<Register />}/>
+                        <Route path="/404" element={<NotFound />}/>
+                        <Route path="*" element={ <Navigate replace to="/404" /> } />
+                    </Routes>
+                </div>
+
             </React.Fragment>
         );
     }

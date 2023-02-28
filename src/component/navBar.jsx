@@ -8,28 +8,28 @@ class NavBar extends Component {
         return(
             <nav className="navbar bg-body-tertiary fixed-top">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Online Judge</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span className="navbar-toggler-icon"></span>
+                    {/* <Link className="navbar-brand" to="/">Online Judge</Link> */}
+                    <button left="0" className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span left="0" className="navbar-toggler-icon" ></span>
                     </button>
                     <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">菜单栏</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body">
                         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">首页</a>
+                            <Link className="nav-link active" aria-current="page" to="/">首页</Link>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 题库 
                             </a>
                             <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">算法题库</a></li>
-                            <li><a className="dropdown-item" href="#">数学题库</a></li>
-                            <li><a className='dropdown-item' href='#'>电气题库</a></li>
+                            <li><Link className="dropdown-item" to="/algorithm">算法题库</Link></li>
+                            <li><Link className="dropdown-item" to="/math">数学题库</Link></li>
+                            <li><Link className='dropdown-item' to='/electric'>电气题库</Link></li>
                             <li>
                                 <hr className="dropdown-divider"></hr>
                             </li>
@@ -59,7 +59,7 @@ class NavBar extends Component {
                             <Link className="nav-link" to="/login">登录</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">注册</Link>
+                            <Link className="nav-link" to="/register">注册</Link>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="https://github.com/Lengyu08/Online-Judge" target="_blank">本项目所有的源代码</a>
