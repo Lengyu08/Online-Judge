@@ -8,7 +8,7 @@ class NavBar extends Component {
         return(
             <nav className="navbar bg-body-tertiary fixed-top">
                 <div className="container-fluid">
-                    {/* <Link className="navbar-brand" to="/">Online Judge</Link> */}
+                    <Link className="navbar-brand" to="/">Online Judge</Link>
                     <button left="0" className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span left="0" className="navbar-toggler-icon" ></span>
                     </button>
