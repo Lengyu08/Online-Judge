@@ -4,6 +4,8 @@ import Home from './content/home';
 import Login from './content/login';
 import Register from './content/register';
 import NotFound from './content/notFound';
+import Algorithm from './question/algorithm';
+import Markdown from './question/markdown';
 import { Route, Routes, Navigate } from 'react-router-dom'; // 路由
 
 // 主方法
@@ -17,6 +19,8 @@ class APP extends Component {
                     <Routes>
                         <Route path="/" element={<Home />}/>
                         <Route path="/home" element={<Home />}/>
+                        <Route path="/algorithm" element={<Algorithm />}/>
+                        <Route path='/math' element={<Markdown />}/>
                         <Route path="/login" element={<Login />}/>
                         <Route path="/register" element={<Register />}/>
                         <Route path="/404" element={<NotFound />}/>

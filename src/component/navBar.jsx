@@ -14,7 +14,7 @@ class NavBar extends Component {
                     </button>
                     <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">菜单栏</h5>
+                        <h5 className="offcanvas-title" id="offcanvasNavbarLabel">工具栏</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div className="offcanvas-body">
