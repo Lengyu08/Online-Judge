@@ -15,13 +15,13 @@ class Home extends Component {
     new Chart(chartCanvas, {
       type: "line",
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
         datasets: [
           {
             label: "刷题难度评分",
-            data: [1500, 1700, 1234, 1344, 1222, 1111, 1321, 1222, 1223, 1444, 2000, 1555],
+            data: [1500, 1700, 500, 1344, 1222, 1111, 1321, 1222, 1223, 1444, 2500, 1555],
             borderColor: "#3e95cd",
-            fill: false
+            fill: true
           }
         ]
       },
@@ -96,6 +96,7 @@ class Home extends Component {
         <div>
         <canvas ref={this.chartRef}></canvas>
         </div>
+
       </div>
     );
   }
