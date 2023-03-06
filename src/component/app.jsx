@@ -5,13 +5,15 @@ import Login from './content/login';
 import Register from './content/register';
 import NotFound from './content/notFound';
 import Algorithm from './question/algorithm';
-import Markdown from './question/markdown';
 import { Route, Routes, Navigate } from 'react-router-dom'; // 路由
+
+
+import Two from './question/content/2';
 
 // 主方法
 class APP extends Component {
     state = {  } 
-    render() { 
+    render() {
         return (
             <React.Fragment>
                 <NavBar/> {/* 实现导航栏 */}
@@ -20,7 +22,9 @@ class APP extends Component {
                         <Route path="/" element={<Home />}/>
                         <Route path="/home" element={<Home />}/>
                         <Route path="/algorithm" element={<Algorithm />}/>
-                        <Route path='/math' element={<Markdown />}/>
+
+                        <Route path="/2" element={<Two />}/>
+
                         <Route path="/login" element={<Login />}/>
                         <Route path="/register" element={<Register />}/>
                         <Route path="/404" element={<NotFound />}/>
