@@ -41,7 +41,7 @@
         <div class="news">
             <h2 class="news-title">项目近况</h2>
             <a href="./ITEM/1.jsp">
-                新闻1:
+                新闻1:管理面板上线,点击用户名即可进入
             </a>
             <span class="news-date">2023-6-18</span><br/><br/>
             <a href="./ITEM/3.jsp">新闻2:匹配系统上线</a>
