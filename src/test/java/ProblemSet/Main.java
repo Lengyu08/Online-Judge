@@ -1,3 +1,5 @@
+package ProblemSet;
+
 import java.util.Scanner;
 
 class Main {
