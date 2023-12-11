@@ -6,8 +6,8 @@ import tornado.websocket
 import tornado.httpserver
 
 # 存储所有连接的WebSocket客户端
-clients = set()
 users = set()
+clients = set()
 
 class WebSocketHandler(tornado.websocket.WebSocketHandler):
 
@@ -98,12 +98,12 @@ def make_app():
     ])
 
 if __name__ == "__main__":
-    # ssl wss
-    # ssl_certificate /etc/letsencrypt/live/app2619.acapp.acwing.com.cn/fullchain.pem;
-    # ssl_certificate_key /etc/letsencrypt/live/app2619.acapp.acwing.com.cn/privkey.pem;
-    # data_dir = "/etc/letsencrypt/live/app2619.acapp.acwing.com.cn"
-    # ssl_ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    # ssl_ctx.load_cert_chain(os.path.join(data_dir, "fullchain.pem"), os.path.join(data_dir, "privkey.pem"))
+    # # ssl wss
+    # # ssl_certificate /etc/letsencrypt/live/app2619.acapp.acwing.com.cn/fullchain.pem;
+    # # ssl_certificate_key /etc/letsencrypt/live/app2619.acapp.acwing.com.cn/privkey.pem;
+    data_dir = "/etc/letsencrypt/live/app2619.acapp.acwing.com.cn"
+    ssl_ctx = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    ssl_ctx.load_cert_chain(os.path.join(data_dir, "fullchain.pem"), os.path.join(data_dir, "privkey.pem"))
     
     app = make_app()
     
@@ -111,8 +111,8 @@ if __name__ == "__main__":
     # app.listen(9090)
 
     print("WebSocket HTTP server started.")
-    # http_server = tornado.httpserver.HTTPServer(app, xheaders=True, ssl_options=ssl_ctx)
-    http_server = tornado.httpserver.HTTPServer(app)
+    http_server = tornado.httpserver.HTTPServer(app, xheaders=True, ssl_options=ssl_ctx)
+    # http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(9090);
 
     # 添加定时任务，每隔1s调用一次广播用户集合的方法
