@@ -132,5 +132,13 @@
         }, 100);
     }
 </script>
+<% } else if ("RoomNumberError".equals(Error)) { %>
+    <script type="text/javascript">
+    window.onload = function () {
+        setTimeout(function () {
+            alert("不接受非房间号登陆!");
+        }, 100);
+    }
+</script>
 <% } %>
 </html>

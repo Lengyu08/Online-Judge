@@ -4,7 +4,7 @@
 <%
   if (loggedInUsername == null || loggedInUsername.isEmpty()) {
       session.setAttribute("Error", "ChatLoginError");
-      response.sendRedirect("../item.jsp");
+      response.sendRedirect("../../item.jsp");
   }
 %>
 
@@ -16,12 +16,22 @@
   <link rel="stylesheet" type="text/css" href="../CSS/navbar.css"/>
   <link rel="stylesheet" type="text/css" href="../CSS/content.css"/>
   <link rel="stylesheet" type="text/css" href="../CSS/chat.css">
+
+  <link rel="stylesheet" type="text/css" href="/LIB/Bootstrap/bootstrap.min.css"/>
 </head>
 
 <body>
 <%@include file="/navbar.jsp" %>
 
 <div class="content">
+  <!-- RoomNumber -->
+  <div class="input-group">
+    <span class="input-group-text">房间号</span>
+    <input type="text" aria-label="password" class="form-control" id="roomNumber" name="roomNumber">
+    <button class="btn btn-outline-secondary" type="button" onclick="connect_room()">连接房间</button>
+  </div>
+  <br/>
+  <!-- -->
   <div id="friend_char_area">
     <span id="friendList">
       <h2>在线用户</h2>
@@ -44,9 +54,23 @@
 
 <script>
   let planWebsocket = null;
-  function initWebpack() {//初始化websocket
+
+  function connect_room() {  //初始化websocket
+    let room_number_input = document.getElementById("roomNumber");
+    let room_number = "";
+    // 验证房间号是否为空
+    if (!room_number_input || room_number_input.value.trim() === "") {
+      room_number = "wss://" + "app2619.acapp.acwing.com.cn" + "/ws?username=<%=loggedInUsername%>";
+    } else if (room_number_input.value.trim() === "test") {
+      room_number = "ws://" + "62.234.34.241:9090" + "/ws?username=<%=loggedInUsername%>";
+    } else if (room_number_input.value.trim() === "wsstest") {
+      room_number = "wss://" + "62.234.34.241:9090" + "/ws?username=<%=loggedInUsername%>";
+    }
+
+
     if ('WebSocket' in window) {
-      planWebsocket = new WebSocket("ws://localhost:9090?<%=loggedInUsername%>"); // 通信地址
+      planWebsocket = new WebSocket(room_number); // 通信地址
+
       planWebsocket.onopen = function (event) {
         console.log('建立连接');
       }
@@ -84,8 +108,7 @@
           } else {
             // 放到聊天区作为其他用户输入
             document.getElementById("chatContext").innerHTML += "<p style=" +
-                "'float: left; border: gray solid 3px; margin-top: 10px; border-radius:10px; background-color: white;'>" +
-                "<span class='chatFont'>"
+                "'float: left; border: gray solid 3px; margin-top: 10px; border-radius:10px; background-color: white;'>" +                "<span class='chatFont'>"
                   + str_data.substring(5) +
                 "</span></p>";
             document.getElementById("chatContext").innerHTML += "<br/><br/><br/><br/><br/>";
@@ -93,18 +116,23 @@
         }
       }
 
-      planWebsocket.onclose = function (event) {
-        console.log('连接关闭');
-      }
+      planWebsocket.onclose = function(event) {
+        if (event.wasClean) {
+            console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+        } else {
+            console.error(`Connection abruptly closed, code=${event.code}, reason=${event.reason}`);
+        }
+      };
 
-      planWebsocket.onerror = function () {
-        alert('websocket通信发生错误！');
-      }
+      planWebsocket.onerror = function(error) {
+        console.log('WebSocket Error: ', error);
+      };      
 
       // 发送 button 的消息
       document.getElementById('sendButton').onclick = function () {
         let messageInput = document.getElementById('messageInput');
-        let message = messageInput.value;
+        let message =  messageInput.value;
+        console.log("即将要发送的信息是" + message);
         planWebsocket.send(message);
         messageInput.value = '';
       }
@@ -112,8 +140,6 @@
       alert('该浏览器不支持websocket!');
     }
   }
-
-  initWebpack(); //调用
 </script>
 </body>
 </html>
