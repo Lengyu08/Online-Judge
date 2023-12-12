@@ -16,7 +16,7 @@
 <!-- Content Start -->
 <div class="content">
     <h1>每日新闻</h1>
-    <video src="./STATIC-RESOURCES/VIDEO/icpc.mp4" style="width: 70%" controls autoplay>
+    <video src="/STATIC-RESOURCES/VIDEO/icpc.mp4" style="width: 70%" controls autoplay>
         <!-- 在 src 属性中指定视频文件的路径 -->
         <!-- controls 属性显示视频控件，允许用户控制播放、暂停等操作 -->
         <!-- autoplay 属性自动播放视频 -->

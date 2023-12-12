@@ -61,10 +61,10 @@
     // 验证房间号是否为空
     if (!room_number_input || room_number_input.value.trim() === "") {
       room_number = "wss://" + "app2619.acapp.acwing.com.cn" + "/ws?username=<%=loggedInUsername%>";
-    } else if (room_number_input.value.trim() === "test") {
-      room_number = "ws://" + "62.234.34.241:9090" + "/ws?username=<%=loggedInUsername%>";
+    } else if (room_number_input.value.trim() === "localtest") {
+      room_number = "ws://" + "localhost:9090" + "/ws?username=<%=loggedInUsername%>";
     } else if (room_number_input.value.trim() === "wsstest") {
-      room_number = "wss://" + "62.234.34.241:9090" + "/ws?username=<%=loggedInUsername%>";
+      room_number = "wss://" + room_number_input.value.trim() + "/ws?username=<%=loggedInUsername%>";
     }
 
 
