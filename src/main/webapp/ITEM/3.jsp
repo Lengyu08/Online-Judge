@@ -31,7 +31,7 @@
     <button class="btn btn-outline-secondary" type="button" onclick="connect_room()">连接房间</button>
   </div>
   <br/>
-  <!-- firend list and chat area -->
+  <!-- -->
   <div id="friend_char_area">
     <span id="friendList">
       <h2>在线用户</h2>
