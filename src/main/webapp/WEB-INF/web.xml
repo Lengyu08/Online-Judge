@@ -36,6 +36,17 @@
     <url-pattern>/servlet/Judge_Result</url-pattern>
   </servlet-mapping>
 
+  <!-- 过滤敏感词 -->
+  <filter>
+    <filter-name>FilterWord</filter-name>
+    <filter-class>Manger.FilterWord</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>FilterWord</filter-name>
+    <url-pattern>/ITEM/*</url-pattern>
+  </filter-mapping>
+
   <!-- 开始页面 -->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

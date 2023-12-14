@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1 id="connectionStatus">WebSocket Connection Status: Connecting...</h1>
+
+    <script>
+        const connectionStatusElement = document.getElementById('connectionStatus');
+        // Replace this URL with your WebSocket server URL
+        const socket = new WebSocket("wss://app2619.acapp.acwing.com.cn/ws?username=test");
+
+        // Connection opened
+        socket.addEventListener('open', (event) => {
+            connectionStatusElement.textContent = 'WebSocket Connection Status: Open';
+            console.log('WebSocket connection opened:', event);
+
+            // Send a test message to the server
+            socket.send('Hello, WebSocket Server!');
+        });
+
+        // Listen for messages from the server
+        socket.addEventListener('message', (event) => {
+            console.log('Received message from server:', event.data);
+        });
+
+        // Listen for WebSocket close event
+        // socket.addEventListener('close', (event) => {
+        //     connectionStatusElement.textContent = 'WebSocket Connection Status: Closed';
+        //     console.log('WebSocket connection closed:', event);
+        // });
+
+        // Listien for Websocket close what is cause the error
+        socket.onerror = function(event) {
+            socket.onclose = function(e) {
+                console.log("WebSocket Error: ", e);
+            }
+        }
+
+        // Listen for WebSocket errors
+        socket.addEventListener('error', (event) => {
+            connectionStatusElement.textContent = 'WebSocket Connection Status: Error';
+            console.error('WebSocket encountered an error:', event);
+        });
+    </script>
+</body>
+</html>
